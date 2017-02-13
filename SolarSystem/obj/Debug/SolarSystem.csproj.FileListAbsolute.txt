@@ -1,0 +1,6 @@
+D:\SASHA\Мои документы\01 Программирование\C#\07.07.2017\SolarSystem\SolarSystem\bin\Debug\SolarSystem.exe.config
+D:\SASHA\Мои документы\01 Программирование\C#\07.07.2017\SolarSystem\SolarSystem\bin\Debug\SolarSystem.exe
+D:\SASHA\Мои документы\01 Программирование\C#\07.07.2017\SolarSystem\SolarSystem\bin\Debug\SolarSystem.pdb
+D:\SASHA\Мои документы\01 Программирование\C#\07.07.2017\SolarSystem\SolarSystem\obj\Debug\SolarSystem.csprojResolveAssemblyReference.cache
+D:\SASHA\Мои документы\01 Программирование\C#\07.07.2017\SolarSystem\SolarSystem\obj\Debug\SolarSystem.exe
+D:\SASHA\Мои документы\01 Программирование\C#\07.07.2017\SolarSystem\SolarSystem\obj\Debug\SolarSystem.pdb

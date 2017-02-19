@@ -4,3 +4,9 @@ D:\SASHA\Мои документы\01 Программирование\C#\07.07.
 D:\SASHA\Мои документы\01 Программирование\C#\07.07.2017\SolarSystem\SolarSystem\obj\Debug\SolarSystem.csprojResolveAssemblyReference.cache
 D:\SASHA\Мои документы\01 Программирование\C#\07.07.2017\SolarSystem\SolarSystem\obj\Debug\SolarSystem.exe
 D:\SASHA\Мои документы\01 Программирование\C#\07.07.2017\SolarSystem\SolarSystem\obj\Debug\SolarSystem.pdb
+D:\SASHA\Мои документы\01 Программирование\C#\07.07.2017\solar_system\SolarSystem\bin\Debug\SolarSystem.exe.config
+D:\SASHA\Мои документы\01 Программирование\C#\07.07.2017\solar_system\SolarSystem\obj\Debug\SolarSystem.exe
+D:\SASHA\Мои документы\01 Программирование\C#\07.07.2017\solar_system\SolarSystem\obj\Debug\SolarSystem.pdb
+D:\SASHA\Мои документы\01 Программирование\C#\Alice Task\solar_system\SolarSystem\bin\Debug\SolarSystem.exe.config
+D:\SASHA\Мои документы\01 Программирование\C#\Alice Task\solar_system\SolarSystem\obj\Debug\SolarSystem.exe
+D:\SASHA\Мои документы\01 Программирование\C#\Alice Task\solar_system\SolarSystem\obj\Debug\SolarSystem.pdb

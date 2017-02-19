@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace SolarSystem
 {
@@ -34,14 +35,14 @@ namespace SolarSystem
     /// </summary>
     public class Sun : CelestialBody // двоеточие значит наследование от класса CelestialBody
     {
-        public int Satellites { get; set; }
+        public List<Planet> Satellites { get; set; }
 
         // конструктор для нужного построения экземпляра
         // двоеточие значит, что name, mass, radius наследуем от класса CelestialBody
         public Sun(string name, double mass, double radius, int satellites)
             : base(name, mass, radius)
         {
-            Satellites = satellites;
+            Satellites = new List<Planet>();
         }
 
         /// <summary>
@@ -52,7 +53,7 @@ namespace SolarSystem
         public override void Display()
         {
             Console.WriteLine("Star: {0}, mass: {1}, radius: {2}, satellites: {3}",
-                this.Name, this.Mass, this.Radius, this.Satellites);
+                this.Name, this.Mass, this.Radius, this.Satellites.Count);
         }
     }
 
@@ -64,14 +65,14 @@ namespace SolarSystem
     /// </summary>
     public class Planet : CelestialBody
     {
-        public int Satellites { get; set; }
+        public List<Planet> Satellites { get; set; }
         public double Distance { get; set; }
 
         public Planet(string name, double mass, double radius,
             int satellites, double distance)
             : base(name, mass, radius)
         {
-            Satellites = satellites;
+            Satellites = new List<Planet>();
             Distance = distance;
         }
 
@@ -82,7 +83,7 @@ namespace SolarSystem
         public override void Display()
         {
             Console.WriteLine("Planet: {0}, mass: {1}, radius: {2}, satellites: {3}, distance: {4}",
-                this.Name, this.Mass, this.Radius, this.Satellites, this.Distance);
+                this.Name, this.Mass, this.Radius, this.Satellites.Count, this.Distance);
         }
     }
 }

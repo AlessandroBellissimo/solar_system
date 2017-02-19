@@ -1,0 +1,68 @@
+Sun	Mercury	Venus	Earth	Mars	Jupiter	Saturn	Uranus	Neptune
+Mercury			Moon	Phobos	Metis	S/2009S1	Cordelia	Naiad
+Venus				Deimos	Adrastea	Pan	Ophelia	Thalassa
+Earth					Amalthea	Daphnis	Bianca	Despina
+Mars					Thebe	Atlas	Cressida	Galatea
+Jupiter					Io	Prometheus	Desdemona	Larissa
+Saturn					Europa	Pandora	Juliet	S/2004N1
+Uranus					Ganymede	Epimetheus	Portia	Proteus
+Neptune					Callisto	Janus	Rosalind	Triton
+					Themisto	Aegaeon	Cupid	Nereid
+					Leda	Mimas	Belinda	Halimede
+					Himalia	Methone	Perdita	Sao
+					Lysithea	Anthe	Puck	Laomedeia
+					Elara	Pallene	Mab	Psamathe
+					Dia	Enceladus	Miranda	Neso
+					Carpo	Tethys	Ariel	
+					S/2003J12	Telesto	Umbriel	
+					Euporie	Calypso	Titania	
+					S/2003J3	Dione	Oberon	
+					S/2003J18	Helene	Francisco	
+					S/2011J1	Polydeuces	Caliban	
+					S/2010J2	Rhea	Stephano	
+					Thelxinoe	Titan	Trinculo	
+					Euanthe	Hyperion	Sycorax	
+					Helike	Iapetus	Margaret	
+					Orthosie	Kiviuq	Prospero	
+					Iocaste	Ijiraq	Setebos	
+					S/2003J16	Phoebe	Ferdinand	
+					Praxidike	Paaliaq		
+					Harpalyke	Skathi		
+					Mneme	Albiorix		
+					Hermippe	S/2007S2		
+					Thyone	Bebhionn		
+					Ananke	Erriapus		
+					Herse	Skoll		
+					Aitne	Siarnaq		
+					Kale	Tarqeq		
+					Taygete	S/2004S13		
+					S/2003J19	Greip		
+					Chaldene	Hyrrokkin		
+					S/2003J15	Jarnsaxa		
+					S/2003J10	Tarvos		
+					S/2003J23	Mundilfari		
+					Erinome	S/2006S1		
+					Aoede	S/2004S17		
+					Kallichore	Bergelmir		
+					Kalyke	Narvi		
+					Carme	Suttungr		
+					Callirrhoe	Hati		
+					Eurydome	S/2004S12		
+					S/2011J2	Farbauti		
+					Pasithee	Thrymr		
+					S/2010J1	Aegir		
+					Kore	S/2007S3		
+					Cyllene	Bestla		
+					Eukelade	S/2004S7		
+					S/2003J4	S/2006S3		
+					Pasiphae	Fenrir		
+					Hegemone	Surtur		
+					Arche	Kari		
+					Isonoe	Ymir		
+					S/2003J9	Loge		
+					S/2003J5	Fornjot		
+					Sinope			
+					Sponde			
+					Autonoe			
+					Megaclite			
+					S/2003J2			

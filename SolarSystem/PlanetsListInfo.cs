@@ -59,7 +59,7 @@ namespace SolarSystem
             int N = ps.Capacity;
             ps.Sort(delegate (Planet x, Planet y)
             {
-                return x.Satellites.CompareTo(y.Satellites);
+                return x.Satellites.Count.CompareTo(y.Satellites.Count);
             });
             return ps[N - 1];
         }

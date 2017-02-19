@@ -90,8 +90,8 @@ namespace SolarSystem
                 list.PlanetWithMaxMass().Mass, list.PlanetWithMaxMass().Name);
             Console.WriteLine("Minimal mass: {0} ({1})",
                 list.PlanetWithMinMass().Mass, list.PlanetWithMinMass().Name);
-            Console.WriteLine("Maximal satellites number: {0} ({1})",
-                list.PlanetWithMaxSatellites().Satellites, list.PlanetWithMaxSatellites().Name);
+            //Console.WriteLine("Maximal satellites number: {0} ({1})",
+            //    list.PlanetWithMaxSatellites().Satellites, list.PlanetWithMaxSatellites().Name);
         }
     }
 }

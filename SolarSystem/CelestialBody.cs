@@ -86,4 +86,30 @@ namespace SolarSystem
                 this.Name, this.Mass, this.Radius, this.Satellites.Count, this.Distance);
         }
     }
+    /// <summary>
+    /// Спутник
+    /// имеет параметры
+    /// название, масса и радиус
+    /// + планета, чьим спутником является
+    /// </summary>
+    public class Satellite : CelestialBody
+    {
+        public Planet SatelliteOf { get; set; }
+
+        public Satellite(string name, double mass, double radius, Planet satelliteOf)
+            : base(name, mass, radius)
+        {
+            satelliteOf = SatelliteOf;
+        }
+
+        /// <summary>
+        /// Переопределенные метод
+        /// отображения информации об объекте
+        /// </summary>
+        public override void Display()
+        {
+            Console.WriteLine("Planet: {0}, mass: {1}, radius: {2}, satellite of: {3}",
+                this.Name, this.Mass, this.Radius, this.SatelliteOf.Name);
+        }
+    }
 }

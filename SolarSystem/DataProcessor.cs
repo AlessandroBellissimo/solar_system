@@ -11,12 +11,10 @@ namespace SolarSystem
     /// - преобразует в нужный формат
     /// - отображает на экран
     /// </summary>
-    public class DataProcessor
+    public abstract class DataProcessor
     {
         public string path { get; private set; }
-        private string[] lines; // массив для считывания данных
-        private Sun sun;        // экземпляр класса Солнце
-        private List<Planet> planets;    // список планет
+        protected string[] lines; // массив для считывания данных
 
         // конструктор класса - нужен для создания экземпляра
         // с нужными параметрами
@@ -37,7 +35,7 @@ namespace SolarSystem
         /// <summary>
         /// Чтение данных из файла
         /// </summary>
-        private void ReadData()
+        protected void ReadData()
         {
             lines = File.ReadAllLines(path);
         }
@@ -45,7 +43,37 @@ namespace SolarSystem
         /// <summary>
         /// Добавление данных в список небесных тел
         /// </summary>
-        private void AddDataToList()
+        protected abstract void AddDataToList();
+
+        /// <summary>
+        /// Отображение данных
+        /// </summary>
+        protected abstract void DisplayData();
+
+        /// <summary>
+        /// Отображение информации о списке планет
+        /// </summary>
+        protected abstract void DisplayInformation();
+    }
+
+    /// <summary>
+    /// Обработка файла со списком планет
+    /// </summary>
+    public class DataProcessorSystem:DataProcessor
+    {
+        private Sun sun;        // экземпляр класса Солнце
+        private List<Planet> planets;    // список планет
+
+        // конструктор класса - нужен для создания экземпляра
+        // с нужными параметрами
+        public DataProcessorSystem(string path):
+            base(path)
+        {}
+        
+        /// <summary>
+        /// Добавление данных в список небесных тел
+        /// </summary>
+        protected override void AddDataToList()
         {
             int N = lines.Length;
             string[][] lineArray = new string[N][];
@@ -71,7 +99,7 @@ namespace SolarSystem
         /// <summary>
         /// Отображение данных
         /// </summary>
-        private void DisplayData()
+        protected override void DisplayData()
         {
             sun.Display();
             foreach (Planet p in planets)
@@ -81,7 +109,7 @@ namespace SolarSystem
         /// <summary>
         /// Отображение информации о списке планет
         /// </summary>
-        private void DisplayInformation()
+        protected override void DisplayInformation()
         {
             PlanetsListInfo list = new PlanetsListInfo(planets);
             Console.WriteLine("Maximal distance: {0} ({1})",
@@ -92,6 +120,45 @@ namespace SolarSystem
                 list.PlanetWithMinMass().Mass, list.PlanetWithMinMass().Name);
             //Console.WriteLine("Maximal satellites number: {0} ({1})",
             //    list.PlanetWithMaxSatellites().Satellites, list.PlanetWithMaxSatellites().Name);
+        }
+    }
+
+    /// <summary>
+    /// Обработка файла со списком планет и их спутников
+    /// </summary>
+    public class DataProcessorSatellites : DataProcessor
+    {
+        private Sun sun;        // экземпляр класса Солнце
+        private List<Planet> planets;    // список планет
+
+        // конструктор класса - нужен для создания экземпляра
+        // с нужными параметрами
+        public DataProcessorSatellites(string path) :
+            base(path)
+        { }
+
+        /// <summary>
+        /// Добавление данных в список небесных тел
+        /// </summary>
+        protected override void AddDataToList()
+        {
+            
+        }
+
+        /// <summary>
+        /// Отображение данных
+        /// </summary>
+        protected override void DisplayData()
+        {
+
+        }
+
+        /// <summary>
+        /// Отображение информации о списке планет
+        /// </summary>
+        protected override void DisplayInformation()
+        {
+            
         }
     }
 }

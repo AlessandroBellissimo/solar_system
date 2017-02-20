@@ -152,7 +152,7 @@ namespace SolarSystem
         }
 
         /// <summary>
-        /// Отображение информации о списке планет
+        /// Добавление спутников к планете из списка
         /// </summary>
         public void AddSatellites()
         {
@@ -169,7 +169,7 @@ namespace SolarSystem
         }
 
         /// <summary>
-        /// Отображение информации о списке планет
+        /// Удаление спутника планеты из списка
         /// </summary>
         public void RemoveSatellites()
         {
@@ -229,7 +229,6 @@ namespace SolarSystem
                     found = true;
                 }
             }
-
             return planet;
         }
     }

@@ -24,7 +24,7 @@ namespace SolarSystem
 
         // конструктор класса - нужен для создания экземпляра
         // с нужными параметрами
-        public DataProcessor(string pathSystem,string pathSatellites)
+        public DataProcessor(string pathSystem, string pathSatellites)
         {
             this.pathSystem = pathSystem;
             this.pathSatellites = pathSatellites;
@@ -33,11 +33,18 @@ namespace SolarSystem
         // метод получения данных
         public void GetInformation()
         {
+            Init();
             ReadData();                 // чтение данных
             AddDataToList();            // добавление данных в список
             AddSatellitesDataToList();
             DisplayData();              // отображение данных
             DisplayInformation();       // отображение информации о списке планет
+        }
+
+        private void Init()
+        {
+            planets = new List<Planet>();
+            satNumbers = new List<int>();
         }
 
         /// <summary>
@@ -56,7 +63,6 @@ namespace SolarSystem
         {
             int N = linesSystem.Length;
             string[][] lineArray = new string[N][];
-            planets = new List<Planet>();
 
             for (int i = 0; i < N - 1; i++)
             {
@@ -86,7 +92,6 @@ namespace SolarSystem
         {
             int N = linesSatellites.Length;
             string[][] lineArray = new string[N][];
-            satNumbers = new List<int>();
 
             for (int i = 0; i < N; i++)
             {
@@ -131,6 +136,77 @@ namespace SolarSystem
                 list.PlanetWithMinMass().Mass, list.PlanetWithMinMass().Name);
             Console.WriteLine("Maximal satellites number: {0} ({1})",
                 list.PlanetWithMaxSatellites().Satellites.Count, list.PlanetWithMaxSatellites().Name);
+        }
+
+        /// <summary>
+        /// Отображение информации о списке спутников
+        /// </summary>
+        public void DisplaySatellites()
+        {
+            Planet planet = ChoosePlanet();
+            Console.WriteLine("Спутники планеты {0}: ", planet.Name);
+            for (int i = 0; i < planet.Satellites.Count; i++)
+            {
+                Console.WriteLine(planet.Satellites[i].Name);
+            }
+        }
+
+        /// <summary>
+        /// Отображение информации о списке планет
+        /// </summary>
+        public void AddSatellites()
+        {
+            Planet planet = ChoosePlanet();
+            Console.WriteLine("Введите название нового спутника:");
+            string name = Console.ReadLine();
+            Satellite s = new Satellite(name, planet);
+            planet.Satellites.Add(s);
+            Console.WriteLine("Обновленный список спутников планеты {0}: ", planet.Name);
+            for (int i = 0; i < planet.Satellites.Count; i++)
+            {
+                Console.WriteLine(planet.Satellites[i].Name);
+            }
+        }
+
+        /// <summary>
+        /// Алгоритм выбора планеты из списка
+        /// </summary>
+        /// <returns></returns>
+        private Planet ChoosePlanet()
+        {
+            Console.WriteLine("Выберите планету из списка:");
+            Planet planet = null;
+            string pname;
+            bool found = false;
+
+            while (found != true)
+            {
+                pname = Console.ReadLine();
+                int count = 0;
+                foreach (Planet p in planets)
+                {
+                    if (pname != p.Name)
+                    {
+                        count++;
+                        continue;
+                    }
+                    else
+                    {
+                        planet = p;
+                        break;
+                    }
+                }
+                if (count == planets.Count)
+                {
+                    Console.WriteLine("Такой планеты нет в списке. Выберите планету из списка");
+                }
+                else
+                {
+                    found = true;
+                }
+            }
+
+            return planet;
         }
     }
 }

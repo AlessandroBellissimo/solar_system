@@ -28,6 +28,10 @@ namespace SolarSystem
             Console.WriteLine("Удалить спутник планеты? (yes/no)");
             if (Console.ReadLine() == "yes")
                 dp1.RemoveSatellites();
+
+            Console.WriteLine("Отсортировать спутники планеты? (yes/no)");
+            if (Console.ReadLine() == "yes")
+                dp1.SortSatellites();
         }
         
     }

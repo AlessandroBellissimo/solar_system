@@ -16,14 +16,18 @@ namespace SolarSystem
         private Sun sun;                    // экземпляр класса Солнце
         private List<Planet> planets;       // список планет
         private List<int> satNumbers;      //  число спутников для каждой планеты
-        public string path { get; private set; }
-        protected string[] lines; // массив для считывания данных
+        protected string[] linesSystem;           // массив для считывания данных
+        protected string[] linesSatellites;           // массив для считывания данных
+
+        public string pathSystem { get; private set; }
+        public string pathSatellites { get; private set; }
 
         // конструктор класса - нужен для создания экземпляра
         // с нужными параметрами
-        public DataProcessor(string path)
+        public DataProcessor(string pathSystem,string pathSatellites)
         {
-            this.path = path;
+            this.pathSystem = pathSystem;
+            this.pathSatellites = pathSatellites;
         }
 
         // метод получения данных
@@ -40,7 +44,8 @@ namespace SolarSystem
         /// </summary>
         private void ReadData()
         {
-            lines = File.ReadAllLines(path);
+            linesSystem = File.ReadAllLines(pathSystem);
+            linesSatellites = File.ReadAllLines(pathSatellites);
         }
 
         /// <summary>
@@ -48,13 +53,13 @@ namespace SolarSystem
         /// </summary>
         private void AddDataToList()
         {
-            int N = lines.Length;
+            int N = linesSystem.Length;
             string[][] lineArray = new string[N][];
             planets = new List<Planet>();
 
             for (int i = 0; i < N - 1; i++)
             {
-                lineArray[i] = lines[i + 1].Split();
+                lineArray[i] = linesSystem[i + 1].Split();
 
                 string name = lineArray[i][0];
                 double mass = Double.Parse(lineArray[i][1]);
@@ -74,14 +79,14 @@ namespace SolarSystem
         /// </summary>
         private void AddSatellitesDataToList()
         {
-            int N = lines.Length;
+            int N = linesSystem.Length;
             string[][] lineArray = new string[N][];
             planets = new List<Planet>();
             satNumbers = new List<int>();
 
             for (int i = 0; i < N; i++)
             {
-                lineArray[i] = lines[i].Split();
+                lineArray[i] = linesSystem[i].Split();
             }
 
             for (int i = 0; i < lineArray[0].Length; i++)

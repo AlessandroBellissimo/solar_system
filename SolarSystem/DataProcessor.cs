@@ -24,7 +24,7 @@ namespace SolarSystem
         }
 
         // метод получения данных
-        public void GetData()
+        public void GetInformation()
         {
             ReadData();         // чтение данных
             AddDataToList();   // добавление данных в список
@@ -142,7 +142,9 @@ namespace SolarSystem
         /// </summary>
         protected override void AddDataToList()
         {
-            
+            int N = lines.Length;
+            string[][] lineArray = new string[N][];
+
         }
 
         /// <summary>

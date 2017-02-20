@@ -14,9 +14,10 @@ namespace SolarSystem
         private void Run()
         {
             // создаем экземпляр класса "обработчик данных", с параметром "путь к файлу"
-            DataProcessor dp = new DataProcessor("Data/SolarSystemInfo2.txt");
-            dp.GetData();
-            Console.WriteLine();
+            DataProcessor dp1 = new DataProcessorSystem("Data/SolarSystemInfo2.txt");
+            dp1.GetInformation();
+            DataProcessor dp2 = new DataProcessorSystem("Data/Satellites.txt");
+            dp2.GetInformation();
         }
     }
 }

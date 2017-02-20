@@ -23,7 +23,7 @@ namespace SolarSystem
         public Planet PlanetWithMaxMass()
         {
             List<Planet> ps = planets;
-            int N = ps.Capacity;
+            int N = ps.Count;
             ps.Sort(delegate (Planet x, Planet y)
             {
                 return x.Mass.CompareTo(y.Mass);
@@ -34,7 +34,7 @@ namespace SolarSystem
         public Planet PlanetWithMinMass()
         {
             List<Planet> ps = planets;
-            int N = ps.Capacity;
+            int N = ps.Count;
             ps.Sort(delegate (Planet x, Planet y)
             {
                 return x.Mass.CompareTo(y.Mass);
@@ -45,7 +45,7 @@ namespace SolarSystem
         public Planet PlanetWithMaxDistance()
         {
             List<Planet> ps = planets;
-            int N = ps.Capacity;
+            int N = ps.Count;
             ps.Sort(delegate (Planet x, Planet y)
             {
                 return x.Distance.CompareTo(y.Distance);
@@ -56,7 +56,7 @@ namespace SolarSystem
         public Planet PlanetWithMaxSatellites()
         {
             List<Planet> ps = planets;
-            int N = ps.Capacity;
+            int N = ps.Count;
             ps.Sort(delegate (Planet x, Planet y)
             {
                 return x.Satellites.Count.CompareTo(y.Satellites.Count);

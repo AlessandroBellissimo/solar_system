@@ -193,6 +193,23 @@ namespace SolarSystem
         }
 
         /// <summary>
+        /// Сортировка спутников планеты из списка
+        /// </summary>
+        public void SortSatellites()
+        {
+            Planet planet = ChoosePlanet();
+            planet.Satellites.Sort(delegate (Satellite x, Satellite y)
+            {
+                return x.Name.CompareTo(y.Name);
+            });
+            Console.WriteLine("Обновленный список спутников планеты {0}: ", planet.Name);
+            for (int i = 0; i < planet.Satellites.Count; i++)
+            {
+                Console.WriteLine(planet.Satellites[i].Name);
+            }
+        }
+
+        /// <summary>
         /// Алгоритм выбора планеты из списка
         /// </summary>
         /// <returns></returns>

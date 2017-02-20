@@ -93,10 +93,6 @@ namespace SolarSystem
                 lineArray[i] = linesSatellites[i].Split();
             }
             
-            // создаем 8 списков - для каждой планеты
-            // заполняем каждый список
-            // читаем 
-
             for (int i = 0; i < planets.Count; i++)
             {
                 List<Satellite> satellites = new List<Satellite>();
@@ -112,7 +108,7 @@ namespace SolarSystem
             }
         }
         /// <summary>
-        /// Отображение данных
+        /// Отображение исходных данных
         /// </summary>
         private void DisplayData()
         {

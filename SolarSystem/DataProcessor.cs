@@ -177,15 +177,18 @@ namespace SolarSystem
             Console.WriteLine("Номер спутника, который нужно удалить:");
             int satNumber = int.Parse(Console.ReadLine());
             if (satNumber < 0 || satNumber >= planet.Satellites.Count)
-                return;
+            {
+                satNumber = 0;
+                Console.WriteLine("Спутника с таким номером нет в списке");
+            }
             else
             {
                 planet.Satellites.RemoveAt(satNumber);
-            }
-            Console.WriteLine("Обновленный список спутников планеты {0}: ", planet.Name);
-            for (int i = 0; i < planet.Satellites.Count; i++)
-            {
-                Console.WriteLine(planet.Satellites[i].Name);
+                Console.WriteLine("Обновленный список спутников планеты {0}: ", planet.Name);
+                for (int i = 0; i < planet.Satellites.Count; i++)
+                {
+                    Console.WriteLine(planet.Satellites[i].Name);
+                }
             }
         }
 

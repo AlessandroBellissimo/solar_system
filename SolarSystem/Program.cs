@@ -17,13 +17,17 @@ namespace SolarSystem
             DataProcessor dp1 = new DataProcessor("Data/SolarSystemInfo2.txt","Data/Satellites.txt");
             dp1.GetInformation();
 
-            Console.WriteLine("Отобразить спутники нужной планеты? (yes/no)");
+            Console.WriteLine("Отобразить спутники планеты? (yes/no)");
             if (Console.ReadLine() == "yes")
                 dp1.DisplaySatellites();
 
-            Console.WriteLine("Добавить спутник для нужной планеты? (yes/no)");
+            Console.WriteLine("Добавить спутник планеты? (yes/no)");
             if (Console.ReadLine() == "yes")
                 dp1.AddSatellites();
+
+            Console.WriteLine("Удалить спутник планеты? (yes/no)");
+            if (Console.ReadLine() == "yes")
+                dp1.RemoveSatellites();
         }
         
     }

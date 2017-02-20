@@ -65,14 +65,14 @@ namespace SolarSystem
     /// </summary>
     public class Planet : CelestialBody
     {
-        public List<Planet> Satellites { get; set; }
+        public List<Satellite> Satellites { get; set; }
         public double Distance { get; set; }
 
         public Planet(string name, double mass, double radius,
             int satellites, double distance)
             : base(name, mass, radius)
         {
-            Satellites = new List<Planet>();
+            Satellites = new List<Satellite>();
             Distance = distance;
         }
 
@@ -108,8 +108,8 @@ namespace SolarSystem
         /// </summary>
         public override void Display()
         {
-            Console.WriteLine("Planet: {0}, mass: {1}, radius: {2}, satellite of: {3}",
-                this.Name, this.Mass, this.Radius, this.SatelliteOf.Name);
+            Console.WriteLine("Satellite name: {0}, satellite of {1}",
+                this.Name, this.SatelliteOf.Name);
         }
     }
 }

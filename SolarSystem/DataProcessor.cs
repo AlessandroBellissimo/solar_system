@@ -33,10 +33,11 @@ namespace SolarSystem
         // метод получения данных
         public void GetInformation()
         {
-            ReadData();         // чтение данных
-            AddDataToList();   // добавление данных в список
-            DisplayData();      // отображение данных
-            DisplayInformation();   // отображение информации о списке планет
+            ReadData();                 // чтение данных
+            AddDataToList();            // добавление данных в список
+            AddSatellitesDataToList();
+            DisplayData();              // отображение данных
+            DisplayInformation();       // отображение информации о списке планет
         }
 
         /// <summary>
@@ -70,7 +71,11 @@ namespace SolarSystem
                 if (distance == 0)
                     sun = new Sun(name, mass, radius, satNum);
                 else
-                    planets.Add(new Planet(name, mass, radius, satNum, distance));
+                {
+                    Planet p = new Planet(name, mass, radius, satNum, distance);
+                    planets.Add(p);
+                    sun.Satellites.Add(p);
+                }
             }
         }
 
@@ -79,22 +84,15 @@ namespace SolarSystem
         /// </summary>
         private void AddSatellitesDataToList()
         {
-            int N = linesSystem.Length;
+            int N = linesSatellites.Length;
             string[][] lineArray = new string[N][];
-            planets = new List<Planet>();
             satNumbers = new List<int>();
 
             for (int i = 0; i < N; i++)
             {
-                lineArray[i] = linesSystem[i].Split();
+                lineArray[i] = linesSatellites[i].Split();
             }
-
-            for (int i = 0; i < lineArray[0].Length; i++)
-            {
-                planets.Add(new Planet(lineArray[0][i]));
-            }
-
-
+            
             // создаем 8 списков - для каждой планеты
             // заполняем каждый список
             // читаем 
@@ -102,18 +100,15 @@ namespace SolarSystem
             for (int i = 0; i < planets.Count; i++)
             {
                 List<Satellite> satellites = new List<Satellite>();
-                Console.WriteLine("Спутники планеты {0}:", planets[i].Name);
                 for (int j = 1; j < N; j++)
                 {
                     if (lineArray[j][i] != "")
                     {
                         Satellite s = new Satellite(lineArray[j][i], planets[i]);
                         planets[i].Satellites.Add(s);
-                        Console.WriteLine("{0} ", s.Name);
                     }
                 }
                 satNumbers.Add(planets[i].Satellites.Count);
-                Console.WriteLine("Число спутников: {0} ", planets[i].Satellites.Count);
             }
         }
         /// <summary>

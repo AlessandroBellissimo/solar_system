@@ -14,6 +14,11 @@ namespace SolarSystem
         public double Mass { get; set; }
         public double Radius { get; set; }
 
+        public CelestialBody(string name)
+        {
+            Name = name;
+        }
+
         public CelestialBody(string name, double mass, double radius)
         {
             Name = name;
@@ -36,6 +41,14 @@ namespace SolarSystem
     public class Sun : CelestialBody // двоеточие значит наследование от класса CelestialBody
     {
         public List<Planet> Satellites { get; set; }
+
+        // конструктор для нужного построения экземпляра
+        // двоеточие значит, что name, mass, radius наследуем от класса CelestialBody
+        public Sun(string name, int satellites)
+            : base(name)
+        {
+            Satellites = new List<Planet>();
+        }
 
         // конструктор для нужного построения экземпляра
         // двоеточие значит, что name, mass, radius наследуем от класса CelestialBody
@@ -68,6 +81,11 @@ namespace SolarSystem
         public List<Satellite> Satellites { get; set; }
         public double Distance { get; set; }
 
+        public Planet(string name)
+            : base(name)
+        {
+        }
+
         public Planet(string name, double mass, double radius,
             int satellites, double distance)
             : base(name, mass, radius)
@@ -96,12 +114,12 @@ namespace SolarSystem
     {
         public Planet SatelliteOf { get; set; }
 
-        public Satellite(string name, double mass, double radius, Planet satelliteOf)
-            : base(name, 1, 1)
+        public Satellite(string name, Planet satelliteOf)
+            : base(name)
         {
             satelliteOf = SatelliteOf;
         }
-
+        
         /// <summary>
         /// Переопределенные метод
         /// отображения информации об объекте

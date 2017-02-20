@@ -169,6 +169,27 @@ namespace SolarSystem
         }
 
         /// <summary>
+        /// Отображение информации о списке планет
+        /// </summary>
+        public void RemoveSatellites()
+        {
+            Planet planet = ChoosePlanet();
+            Console.WriteLine("Номер спутника, который нужно удалить:");
+            int satNumber = int.Parse(Console.ReadLine());
+            if (satNumber < 0 || satNumber >= planet.Satellites.Count)
+                return;
+            else
+            {
+                planet.Satellites.RemoveAt(satNumber);
+            }
+            Console.WriteLine("Обновленный список спутников планеты {0}: ", planet.Name);
+            for (int i = 0; i < planet.Satellites.Count; i++)
+            {
+                Console.WriteLine(planet.Satellites[i].Name);
+            }
+        }
+
+        /// <summary>
         /// Алгоритм выбора планеты из списка
         /// </summary>
         /// <returns></returns>

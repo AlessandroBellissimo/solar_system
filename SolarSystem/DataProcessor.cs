@@ -128,8 +128,8 @@ namespace SolarSystem
     /// </summary>
     public class DataProcessorSatellites : DataProcessor
     {
-        private Sun sun;        // экземпляр класса Солнце
-        private List<Planet> planets;    // список планет
+        private Planet planet;                  // экземпляр класса планета
+        private List<Satellite> satellites;    // список спутников
 
         // конструктор класса - нужен для создания экземпляра
         // с нужными параметрами

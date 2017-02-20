@@ -37,8 +37,7 @@ namespace SolarSystem
             ReadData();                 // чтение данных
             AddDataToList();            // добавление данных в список
             AddSatellitesDataToList();
-            DisplayData();              // отображение данных
-            DisplayInformation();       // отображение информации о списке планет
+            DisplaySolarSystem();              // отображение данных
         }
 
         private void Init()
@@ -115,7 +114,7 @@ namespace SolarSystem
         /// <summary>
         /// Отображение исходных данных
         /// </summary>
-        private void DisplayData()
+        private void DisplaySolarSystem()
         {
             sun.Display();
             foreach (Planet p in planets)
@@ -125,7 +124,7 @@ namespace SolarSystem
         /// <summary>
         /// Отображение информации о списке планет
         /// </summary>
-        private void DisplayInformation()
+        public void DisplayInformation()
         {
             PlanetsListInfo list = new PlanetsListInfo(planets);
             Console.WriteLine("Maximal distance: {0} ({1})",

@@ -97,7 +97,7 @@ namespace SolarSystem
         public Planet SatelliteOf { get; set; }
 
         public Satellite(string name, double mass, double radius, Planet satelliteOf)
-            : base(name, mass, radius)
+            : base(name, 1, 1)
         {
             satelliteOf = SatelliteOf;
         }

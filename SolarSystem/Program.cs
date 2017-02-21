@@ -15,27 +15,11 @@ namespace SolarSystem
         {
             // создаем экземпляр класса "обработчик данных", с параметром "путь к файлу"
             DataProcessor dp1 = new DataProcessor("Data/SolarSystemInfo2.txt","Data/Satellites.txt");
-            dp1.GetInformation();
-            Console.WriteLine("Отобразить информацию о планетах? (yes/no)");
+            Console.WriteLine("Отобразить информацию о солнечной системе? (yes/no)");
             if (Console.ReadLine() == "yes")
+            {
                 dp1.DisplayInformation();
-
-            Console.WriteLine("Отобразить спутники планеты? (yes/no)");
-            if (Console.ReadLine() == "yes")
-                dp1.DisplaySatellites();
-
-            Console.WriteLine("Добавить спутник планеты? (yes/no)");
-            if (Console.ReadLine() == "yes")
-                dp1.AddSatellites();
-
-            Console.WriteLine("Удалить спутник планеты? (yes/no)");
-            if (Console.ReadLine() == "yes")
-                dp1.RemoveSatellites();
-
-            Console.WriteLine("Отсортировать спутники планеты? (yes/no)");
-            if (Console.ReadLine() == "yes")
-                dp1.SortSatellites();
+            }
         }
-        
     }
 }

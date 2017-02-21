@@ -13,9 +13,10 @@ namespace SolarSystem
     /// </summary>
     public class DataProcessor
     {
-        private Sun sun;                    // экземпляр класса Солнце
-        private List<Planet> planets;       // список планет
-        private List<int> satNumbers;      //  число спутников для каждой планеты
+        private Sun sun;                        // экземпляр класса Солнце
+        private List<Planet> planets;           // список планет
+        private List<int> satNumbers;           //  число спутников для каждой планеты
+        private PlanetsListInfo planetListInfo;
         protected string[] linesSystem;           // массив для считывания данных
         protected string[] linesSatellites;           // массив для считывания данных
 
@@ -28,22 +29,20 @@ namespace SolarSystem
         {
             this.pathSystem = pathSystem;
             this.pathSatellites = pathSatellites;
-        }
-
-        // метод получения данных
-        public void GetInformation()
-        {
             Init();
-            ReadData();                 // чтение данных
-            AddDataToList();            // добавление данных в список
-            AddSatellitesDataToList();
-            DisplaySolarSystem();              // отображение данных
         }
 
+        /// <summary>
+        /// Инициализация
+        /// </summary>
         private void Init()
         {
             planets = new List<Planet>();
             satNumbers = new List<int>();
+            planetListInfo = new PlanetsListInfo(planets);
+            ReadData();                 // чтение данных
+            AddDataToList();            // добавление данных в список
+            AddSatellitesDataToList();
         }
 
         /// <summary>
@@ -111,6 +110,35 @@ namespace SolarSystem
                 satNumbers.Add(planets[i].Satellites.Count);
             }
         }
+
+        /// <summary>
+        /// Отображение информации о списке планет (planetListInfo)
+        /// </summary>
+        public void DisplayInformation()
+        {
+            DisplaySolarSystem();
+
+            Console.WriteLine("Отобразить информацию о планетах? (yes/no)");
+            if (Console.ReadLine() == "yes")
+                planetListInfo.DisplayInformation();
+
+            Console.WriteLine("Отобразить спутники планеты? (yes/no)");
+            if (Console.ReadLine() == "yes")
+                planetListInfo.DisplaySatellites();
+
+            Console.WriteLine("Добавить спутник планеты? (yes/no)");
+            if (Console.ReadLine() == "yes")
+                planetListInfo.AddSatellites();
+
+            Console.WriteLine("Удалить спутник планеты? (yes/no)");
+            if (Console.ReadLine() == "yes")
+                planetListInfo.RemoveSatellites();
+
+            Console.WriteLine("Отсортировать спутники планеты? (yes/no)");
+            if (Console.ReadLine() == "yes")
+                planetListInfo.SortSatellites();
+        }
+
         /// <summary>
         /// Отображение исходных данных
         /// </summary>
@@ -121,131 +149,5 @@ namespace SolarSystem
                 p.Display();
         }
 
-        /// <summary>
-        /// Отображение информации о списке планет
-        /// </summary>
-        public void DisplayInformation()
-        {
-            PlanetsListInfo list = new PlanetsListInfo(planets);
-            Console.WriteLine("Maximal distance: {0} ({1})",
-                list.PlanetWithMaxDistance().Distance, list.PlanetWithMaxDistance().Name);
-            Console.WriteLine("Maximal mass: {0} ({1})",
-                list.PlanetWithMaxMass().Mass, list.PlanetWithMaxMass().Name);
-            Console.WriteLine("Minimal mass: {0} ({1})",
-                list.PlanetWithMinMass().Mass, list.PlanetWithMinMass().Name);
-            Console.WriteLine("Maximal satellites number: {0} ({1})",
-                list.PlanetWithMaxSatellites().Satellites.Count, list.PlanetWithMaxSatellites().Name);
-        }
-
-        /// <summary>
-        /// Отображение информации о списке спутников
-        /// </summary>
-        public void DisplaySatellites()
-        {
-            Planet planet = ChoosePlanet();
-            Console.WriteLine("Спутники планеты {0}: ", planet.Name);
-            for (int i = 0; i < planet.Satellites.Count; i++)
-            {
-                Console.WriteLine(planet.Satellites[i].Name);
-            }
-        }
-
-        /// <summary>
-        /// Добавление спутников к планете из списка
-        /// </summary>
-        public void AddSatellites()
-        {
-            Planet planet = ChoosePlanet();
-            Console.WriteLine("Введите название нового спутника:");
-            string name = Console.ReadLine();
-            Satellite s = new Satellite(name, planet);
-            planet.Satellites.Add(s);
-            Console.WriteLine("Обновленный список спутников планеты {0}: ", planet.Name);
-            for (int i = 0; i < planet.Satellites.Count; i++)
-            {
-                Console.WriteLine(planet.Satellites[i].Name);
-            }
-        }
-
-        /// <summary>
-        /// Удаление спутника планеты из списка
-        /// </summary>
-        public void RemoveSatellites()
-        {
-            Planet planet = ChoosePlanet();
-            Console.WriteLine("Номер спутника, который нужно удалить:");
-            int satNumber = int.Parse(Console.ReadLine());
-            if (satNumber < 0 || satNumber >= planet.Satellites.Count)
-            {
-                satNumber = 0;
-                Console.WriteLine("Спутника с таким номером нет в списке");
-            }
-            else
-            {
-                planet.Satellites.RemoveAt(satNumber);
-                Console.WriteLine("Обновленный список спутников планеты {0}: ", planet.Name);
-                for (int i = 0; i < planet.Satellites.Count; i++)
-                {
-                    Console.WriteLine(planet.Satellites[i].Name);
-                }
-            }
-        }
-
-        /// <summary>
-        /// Сортировка спутников планеты из списка
-        /// </summary>
-        public void SortSatellites()
-        {
-            Planet planet = ChoosePlanet();
-            planet.Satellites.Sort(delegate (Satellite x, Satellite y)
-            {
-                return x.Name.CompareTo(y.Name);
-            });
-            Console.WriteLine("Обновленный список спутников планеты {0}: ", planet.Name);
-            for (int i = 0; i < planet.Satellites.Count; i++)
-            {
-                Console.WriteLine(planet.Satellites[i].Name);
-            }
-        }
-
-        /// <summary>
-        /// Алгоритм выбора планеты из списка
-        /// </summary>
-        /// <returns></returns>
-        private Planet ChoosePlanet()
-        {
-            Console.WriteLine("Выберите планету из списка:");
-            Planet planet = null;
-            string pname;
-            bool found = false;
-
-            while (found != true)
-            {
-                pname = Console.ReadLine();
-                int count = 0;
-                foreach (Planet p in planets)
-                {
-                    if (pname != p.Name)
-                    {
-                        count++;
-                        continue;
-                    }
-                    else
-                    {
-                        planet = p;
-                        break;
-                    }
-                }
-                if (count == planets.Count)
-                {
-                    Console.WriteLine("Такой планеты нет в списке. Выберите планету из списка");
-                }
-                else
-                {
-                    found = true;
-                }
-            }
-            return planet;
-        }
     }
 }
